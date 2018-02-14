@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -63,11 +64,17 @@ public class MedicoControllerTest {
 
     @Test
     public void testFindDoctor()throws Exception{
-        mockMvc.perform(get("/Medicos/"+10L)
+        mockMvc.perform(get("/Medicos/"+9L)
         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
 
+    }
+
+    @Test
+    public void DeleteMedico()throws Exception{
+        mockMvc.perform(delete("/Medicos/"+9L))
+                .andExpect(status().isOk());
     }
 
 
